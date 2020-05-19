@@ -1,13 +1,13 @@
 @font-face {
     font-family: 'pirataone';
-    src: url("/assets/fonts/fontname/pirataone-regular-webfont.woff") format("woff"),
-    url("/assets/fonts/fontname/pirataone-regular-webfont.woff2") format("woff2"),
-    url("/assets/fonts/fontname/PirataOne-Regular.ttf") format("truetype");
+    src: url("/remotehaven/assets/fonts/fontname/pirataone-regular-webfont.woff") format("woff"),
+    url("/remotehaven/assets/fonts/fontname/pirataone-regular-webfont.woff2") format("woff2"),
+    url("/remotehaven/assets/fonts/fontname/PirataOne-Regular.ttf") format("truetype");
   }
 
   @font-face {
       font-family: 'open-sans';
-      src: url("/assets/fonts/fontname/opensans-regular-webfont.woff") format("woff"),
-      url("/assets/fonts/fontname/opensans-regular-webfont.woff2") format("woff2"),
-      url("/assets/fonts/fontname/OpenSans-Regular.ttf") format("truetype");
+      src: url("/remotehaven/assets/fonts/fontname/opensans-regular-webfont.woff") format("woff"),
+      url("/remotehaven/assets/fonts/fontname/opensans-regular-webfont.woff2") format("woff2"),
+      url("/remotehaven/assets/fonts/fontname/OpenSans-Regular.ttf") format("truetype");
   }
