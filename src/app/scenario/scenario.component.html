@@ -1,0 +1,128 @@
+<div class="row">
+    <div class="four columns">
+        <h2>{{myScenario.myCharacter.name}}</h2>
+    </div>
+    <div class="four columns">
+        <h2>Health: {{myScenario.health}} / {{myScenario.myCharacter.maxhealth}}</h2>
+    </div>
+    <div class="four columns">
+        <h2>Lost Cards: {{myScenario.lost.length}}</h2>
+    </div>
+</div>
+    <!-- Info -->
+    <div class="row">
+        <!--Character-->
+<div class="four columns">
+    <h3>Scenario Stats</h3>
+    <form>
+        <mat-slider min="1" max="{{myScenario.myCharacter.maxhealth}}" step="1" value="1" thumbLabel [(ngModel)]="myScenario.health" [ngModelOptions]="{standalone: true}"></mat-slider>
+        <mat-form-field appearance="fill">
+            <mat-label>Gold</mat-label>
+            <input matInput [(ngModel)]="myScenario.gold" label="gold" placeholder="" name="gold">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Experience</mat-label>
+            <input matInput [(ngModel)]="myScenario.experience" label="experience" placeholder="" name="experience">
+        </mat-form-field>
+    </form>
+</div>
+<!-- Attack Deck -->
+<div class="four columns">
+    <app-attack-mod [myScenario]='myScenario'></app-attack-mod>
+</div>
+<!-- Scenario State -->
+<div class="four columns">
+    <app-scenario-state></app-scenario-state>
+</div>
+    </div>
+    <!-- Buttons -->
+    <div class="row">
+        <div class="four columns">
+            <button class="button button-primary" (click)="discardCards()">Discard</button>
+        </div>
+        <div class="four columns">
+            <button class="button button-primary" (click)="quickRest()">Quick Rest</button>
+        </div>
+        <div class="four columns">
+            <button class="button button-primary" (click)="longRest()">Long Rest</button>
+        </div>
+    </div>
+    <!--Played and Active-->
+    <div class="row">
+        <div class="seven columns droppable">
+            <div 
+            cdkDropList
+            #played="cdkDropList"
+            [cdkDropListData]="myScenario.played"
+            [cdkDropListConnectedTo]="[hand,active,discard,lost]"
+            class="character-abilities"
+            (cdkDropListDropped)="drop($event)">
+            <h2>Played</h2>
+                <div *ngFor="let ability of myScenario.played" class="ability" cdkDrag>
+                    <img src="{{myScenario.createCardPath(ability.image)}}" alt="{{ability.name}}" class="played-image"/>
+                </div>
+            </div>
+        </div>
+            <div class="five columns droppable">
+                <div
+                cdkDropList
+                #active="cdkDropList"
+                [cdkDropListData]="myScenario.active"
+                [cdkDropListConnectedTo]="[played,hand,discard,lost]"
+                class="character-abilities"
+                (cdkDropListDropped)="drop($event)">
+                <h2>Active</h2>
+                <div *ngFor="let ability of myScenario.active" class="ability" cdkDrag>
+                    <img src="{{myScenario.createCardPath(ability.image)}}" alt="{{ability.name}}" class="active-image"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Hand-->
+    <div class="row">
+        <div class="u-full-width droppable">
+            <div 
+            cdkDropList
+            #hand="cdkDropList"
+            [cdkDropListData]="myScenario.hand"
+            [cdkDropListConnectedTo]="[played,active,discard,lost]"
+            class="character-abilities"
+            (cdkDropListDropped)="drop($event)">
+            <h2>Hand</h2>
+            <div *ngFor="let ability of myScenario.hand" class="ability" cdkDrag>
+                <img src="{{myScenario.createCardPath(ability.image)}}" alt="{{ability.name}}" class="hand-image"/>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!--Discard and Lost-->
+    <div class="row">
+        <div class="six columns droppable">
+            <div 
+            cdkDropList
+            #discard="cdkDropList"
+            [cdkDropListData]="myScenario.discarded"
+            [cdkDropListConnectedTo]="[played,active,hand,lost]"
+            class="character-abilities"
+            (cdkDropListDropped)="drop($event)">
+            <h2>Discard</h2>
+            <div *ngFor="let ability of myScenario.discarded" class="ability" cdkDrag>
+                <img src="{{myScenario.createCardPath(ability.image)}}" alt="{{ability.name}}" class="ability-image"/>
+            </div>
+        </div>
+        </div>
+        <div class="six columns droppable">
+            <div
+            cdkDropList
+            #lost="cdkDropList"
+            [cdkDropListData]="myScenario.lost"
+            [cdkDropListConnectedTo]="[played,active,hand,discard]"
+            class="character-abilities"
+            (cdkDropListDropped)="drop($event)">
+            <h2>Lost</h2>
+            <div *ngFor="let ability of myScenario.lost" class="ability" cdkDrag>
+                <img src="{{myScenario.createCardPath(ability.image)}}" alt="{{ability.name}}" class="ability-image"/>
+            </div>
+        </div>
+        </div>
+    </div>

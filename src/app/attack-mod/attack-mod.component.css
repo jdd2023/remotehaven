@@ -1,0 +1,11 @@
+.attackmod {
+    display: inline-block;
+    position: relative;
+}
+.attackmod-image {
+    display: inline;
+    width: 15rem;
+}
+button.attackmod {
+    border: 0px;
+} 

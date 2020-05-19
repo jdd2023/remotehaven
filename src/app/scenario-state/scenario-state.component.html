@@ -1,0 +1,11 @@
+<h3>States</h3>
+<div *ngFor="let state of scenarioStates" class="state">
+    <div *ngIf="state.active">
+        <img src="{{state.createURL()}}" class="state-image"/>
+    </div>
+</div>
+<div>
+    <div *ngFor="let state of scenarioStates" class="state">
+        <mat-checkbox id="{{state.id}}" [(ngModel)]="state.active">{{state.name}}</mat-checkbox>
+    </div>
+</div>

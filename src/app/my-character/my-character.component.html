@@ -1,0 +1,68 @@
+
+<div class="row">
+    <form class="u-full-width">
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput [(ngModel)]="myCharacter.name" placeholder="Ceda" name="name">
+        </mat-form-field>
+            <mat-select placeholder="Select a Class" [(ngModel)]="myCharacter.characterClass" [ngModelOptions]="{standalone: true}" (selectionChange)="onSelect($event.value)">
+                <mat-optgroup *ngFor="let group of characterClassGroups" [label]="group.name"
+                    [disabled]="group.disabled">
+                    <mat-option *ngFor="let characterClass of group.characterClasses" [value]="characterClass">
+                        <img src="/assets/images/character_icons/{{characterClass.name}}.png" alt="{{characterClass.name}}" class="character-icon"/>
+                    </mat-option>
+                </mat-optgroup>
+            </mat-select>
+
+            <mat-slider min="1" max="9" step="1" value="1" thumbLabel [(ngModel)]="myCharacter.level" [ngModelOptions]="{standalone: true}" (change)="onChange($event)"></mat-slider>
+
+    </form>
+</div>
+<div *ngIf="myCharacter && myCharacter.characterClass">
+    <div class="row">
+        <div class="six columns">
+            <h2>{{myCharacter.name}} - {{myCharacter.characterClass.name | uppercase}} - Level {{myCharacter.level}}</h2>
+        </div>
+        <div>
+            <a class="button button-primary u-pull-right" [routerLink]="['/scenario']" [state]="{data: myCharacter}">Start Scenario</a>
+        </div>
+    </div>
+    <!-- Need to clean up classes -->
+    <!-- Available -->
+    <div class="row">
+        <div class="six columns droppable">
+            <div 
+            cdkDropList
+            #abilityList="cdkDropList"
+            [cdkDropListData]="myCharacter.characterClass.abilities"
+            [cdkDropListConnectedTo]="[handList]"
+            class="character-abilities"
+            (cdkDropListDropped)="drop($event)">
+                <h2>Abilities</h2>
+                <div *ngFor="let ability of myCharacter.characterClass.abilities" class="ability" cdkDrag>
+                    <div *ngIf="myCharacter.level >= ability.level">
+                        <img src="{{myCharacter.createCardPath(ability.image)}}" alt="{{ability.name}}" class="ability-image"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <!-- Hand -->
+        <div class="six columns droppable">
+            <div
+            cdkDropList
+            #handList="cdkDropList"
+            [cdkDropListData]="myCharacter.hand"
+            [cdkDropListConnectedTo]="[abilityList]"
+            class="character-abilities"
+            (cdkDropListDropped)="drop($event)">
+                <h2>Hand: {{myCharacter.handSizeDisplay()}}</h2>
+                <div *ngIf="myCharacter.hand">
+                    <div *ngFor="let ability of myCharacter.hand" class="ability" cdkDrag>
+                        <img src="{{myCharacter.createCardPath(ability.image)}}" alt="{{ability.name}}" class="ability-image"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</div>

@@ -1,0 +1,70 @@
+/* You can add global styles to this file, and also import other style files */
+/* Application-wide Styles */
+/*
+
+h1 {
+    color: rgb(221, 29, 4);
+    font-family: 'pirataone';
+    font-size: 250%;
+  }
+  h2, h3 {
+    color: #444;
+    font-family: 'pirataone';
+    font-weight: lighter;
+  }
+  body {
+    margin: 2em;
+    background-image: url("/assets/images/background/Background.jpg");
+    background-color: #cccccc;
+  }
+  body, input[type="text"], button {
+    color: #333;
+    font-family: 'open-sans';
+  }
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'open-sans';
+  }
+  */
+  /* Float four columns side by side
+  .column {
+    float: left;
+    width: 25%;
+    padding: 0 10px;
+  }
+  */
+  /* Remove extra left and right margins, due to padding in columns
+  .row {margin: 0 -5px;}
+  */
+  /* Clear floats after the columns
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  */
+  /* Style the counter cards
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); 
+    padding: 16px;
+    text-align: center;
+  }
+  */
+  /* Responsive columns - one column layout (vertical) on small screens
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+  /* everywhere else
+  * {
+    font-family: 'open-sans';
+  }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+*/

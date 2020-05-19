@@ -1,0 +1,5 @@
+<h3>Attack Deck ({{myScenario.attackDeck.length}})</h3>
+<div class="attackmod">
+    <button class="attackmod" (click)="drawCard()"><img src="{{attackBack}}" class="attackmod-image"/></button>
+    <button class="attackmod" *ngIf="myScenario.attackDiscard.length > 0" (click)="shuffle()"><img src="{{myScenario.activeAttackMod}}" class="attackmod-image"/></button>
+</div>

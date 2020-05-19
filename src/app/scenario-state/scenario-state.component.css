@@ -1,0 +1,9 @@
+.state {
+    display: inline-block;
+    position: relative;
+    padding: 5px;
+}
+.state-image {
+    display: inline;
+    width: 5rem;
+} 
